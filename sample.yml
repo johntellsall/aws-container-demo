@@ -1,0 +1,18 @@
+# SETUP
+# ssh-agent bash
+# ssh-add jm.pem 
+# USAGE
+# ansible-playbook -v sample.yml 
+
+
+---
+-   hosts: key_jm
+    user: ec2-user
+    become: yes
+    tasks:
+    -   name: Update all packages to latest
+        yum: name=* state=latest
+
+    # -   name: Install specific nginx package for centos 7
+    # yum: name='http://nginx.org/packages/centos/7/noarch/RPMS/nginx-\
+    # release-centos-7-0.el7.ngx.noarch.rpm' state=present
